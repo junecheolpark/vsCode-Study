@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>색 바꾸기</title>
+</head>
+<style>
+    div {
+        border: 1px solid black;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<!-- <body>
+    <div id="idDiv">First Div</div>
+    <button value="Change 1rd Div" id="btn1">Change 1rd Div</button>
+    <div class="clsDiv">Second Div</div>
+    <button value="Change 2rd Div" id="btn2">Change 2rd Div</button>
+    <div class="clsDiv2">Third Div</div>
+    <button value="Change 3rd Div" id="btn3">Change 3rd Div</button>
+    <br>
+    <button value="Change All" id="btnAll">Change All</button>
+
+    <script>
+        $("#btnAll").on("click", function () {
+            $("div").css({
+                "background-color" : "#96b9d6"
+            });
+        })
+
+        $("#btn1").on("click", function () {
+            $("#idDiv").css({
+                "background-color" : "#c096d6"
+            });
+        })
+        $("#btn2").on("click", function () {
+            $(".clsDiv").css({
+                "background-color" : "#c096d6"
+            });
+        })
+        $("#btn3").on("click", function () {
+            $(".clsDiv2").css({
+                "background-color" : "#c096d6"
+            });
+        })
+    </script> -->
+    <div class="rsDiv" id="firstDiv">First Div</div>
+    <button class="btnChange" value="firstDiv">Change 1rd Div</button>
+    <div class="rsDiv" id="secondDiv">Second Div</div>
+    <button class="btnChange" value="secondDiv">Change 2rd Div</button>
+    <div class="rsDiv" id="thirdDiv">Third Div</div>
+    <button class="btnChange" value="thirdDiv">Change 3rd Div</button>
+    <br>
+    <button id="btnChangeAll">Change All</button>
+</body>
+<script>
+    $(".btnChange").on("click", function(){
+        let rs = $(this).val();
+        console.log(rs);
+
+        $("#"+rs).css({
+            "background-color" : "pink"
+            ,color : "red"
+        })
+    })
+
+    $("#btnChangeAll").on("click", function(){
+        $(".rsDiv").css({
+            "background-color" : "skyblue"
+            ,color : "dodgerblue"
+        })
+    })
+</script>
+</html>

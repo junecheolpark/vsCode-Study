@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <title>랜덤색바꾸기</title>
+</head>
+<style>
+    div {
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<body>
+    <div class="rsDiv" id="firstDiv"></div>
+    <button class="btnChange" value="firstDiv">1Div</button>
+    <div class="rsDiv" id="secondDiv"></div>
+    <button class="btnChange" value="secondDiv">2Div</button>
+    <div class="rsDiv" id="thirdDiv"></div>
+    <button class="btnChange" value="thirdDiv">3Div</button>
+    <div class="rsDiv" id="fourDiv"></div>
+    <button class="btnChange" value="fourDiv">4Div</button>
+
+    <script>
+        /*
+        function getRandomColor() {
+            return "#" + Math.floor(Math.random() * 16777215).toString(16);
+        }
+        $(".btnChange").on("click", function () {
+            let rs = $(this).val();
+            console.log(rs);
+
+            $("#" + rs).css({
+                "background-color": getRandomColor()
+            })
+        })
+        */$
+        let colors = [
+            "orange"
+            ,"red"
+            ,"dodgerblue"
+            ,"green"
+            ,"yellow"
+            ,"black"
+        ]
+        //  랜덤 수
+        //  0 ~ max값 : Math.random() * max 값 
+        //  Math.floor(인자) : 인자를 넘기면 그 수를 정수로 만들어 주는 함수
+        //  Math.floor(Math.random() * max값)
+        
+        $(".btnChange").on("mouseover", function(){
+            console.log(Math.floor(Math.random() * 8));
+            // console.log($(this).prev()); //이전(앞)에 위치한 형제요소
+            $(this).prev().css("background-color", colors[getRanNum()]);
+        })
+
+        function getRanNum(){
+            return Math.floor(Math.random()*5);
+        }
+    </script>
+
+</body>
+
+</html>

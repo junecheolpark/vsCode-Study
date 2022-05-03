@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <title>카운트 증감</title>
+    <style>
+        .container {
+            border: 1px solid black;
+            width: 500px;
+            height: 200px;
+            margin: auto;
+            overflow-y: auto;
+        }
+
+        .buttonBox {
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+    <div class="buttonBox">
+        <button type="button" id="upAdd" >위로 추가하기</button>
+        <button type="button" id="downAdd" >아래로 추가하기</button>
+    </div>
+
+    <script>
+        let count = 1;
+        $("#upAdd").on("click", function () {
+
+            
+            $(".container").prepend("<div>Contents Message Here:" + count + "</div>")
+            count++
+            $('.container').scrollTop(0); 
+
+        });
+
+
+        $("#downAdd").on("click", function () {
+            
+            $(".container").append("<div>Contents Message Here:" + count + "</div>")
+            count++
+            $('.container').scrollTop(1000); 
+        });
+    </script>
+</body>
+
+</html>
