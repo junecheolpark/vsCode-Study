@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>평균 체중</title>
+</head>
+<!-- 
+
+var , let , const 가있으나 
+var는 변수를 한 번 더 선언했음에도 불구하고, 에러가 나오지 않고 각기 다른 값이 출력되는 것을 볼 수 있다.
+let 은 변수에 재할당이 가능하다
+const는 변수 재선언, 변수 재할당 모두 불가능하다.
+
+기본적으로 자바와 비슷하나  == 같은경우 자료형이 달라도 같은 10이면 true 가 난다 이때 자료형도 같아야되는 ===이 쓰인다
+|| 는 or
+&& and
+a ? "asd" : "dsa" 
+-> a가 true 이면 asd 아니면 dsa
+
+ -->
+<body>
+    <Script>
+        let name = prompt("당신의 이름은?")
+        let height = prompt("당신의 신장은?")
+        let weight = prompt("당신의 몸무게은?")
+
+        let normal_w = (height - 100) * 0.9; //평균체중
+        let result = weight >= normal_w - 5 && weight <= normal_w + 5; //오차범위 +-5
+        result = result ? "적정 체중입니다." : "적정체중이 아닙니다."; // result가 트루이면 적정 체중입니다 아니면 적정체중이 아닙니다
+        document.write(name + "님은" + result);
+
+    </Script>
+</body>
+</html>
