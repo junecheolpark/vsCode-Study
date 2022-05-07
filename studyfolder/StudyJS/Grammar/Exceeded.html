@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돈 관리</title>
+</head>
+<body>
+    <script>
+        // let Budget = 10000;
+        // let price1 = 3000;
+        // let price2 = 6000;
+        // let price3 = 3000;
+
+        /**/
+        let Budget = prompt("오늘 예산이 얼마인가요?", "");
+        let price1 = prompt("오늘 사용할 교통비는?", ""); //교통비
+        let price2 = prompt("오늘 사용할 식비는?", ""); // 식비
+        let price3 = prompt("오늘 사용할 음료비는?", ""); //음료비
+
+        let num_b;
+        let num1;
+        let num2;
+        let num3;
+        
+        num_b = Number(Budget); // Number는 대문자 N이여야함
+        num1 = Number(price1);
+        num2 = Number(price2);
+        num3 = Number(price3);
+        /**/
+
+        let addition = num1 + num2 + num3 //총 더하기
+        let subtraction = num1+num2+num3-num_b // 예산에서 빼기
+        let result = num_b >= addition
+        // document.write(result + "<br>");
+        // document.write(addition , "<br>");
+        // document.write(subtraction+ "<br>");
+
+        result = result ? "돈 관리 잘했어요!" : subtraction + "초과입니다!"
+        document.write(result);
+    </script>
+</body>
+</html>
