@@ -1,0 +1,113 @@
+<!-- index.html -->
+<!-- static 파일들과 연결하였고, API로 얻은 정보들을 html로 보내기위해 id가 a인 div를 만들어 놓음 -->
+<!-- script에 json 연결 -->
+
+
+<!DOCTYPE html>
+{% load static %}
+<!-- static 폴더와 연결 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a">
+    </div>
+    <script> //javaScirpt
+
+//index.json
+
+var key = "?key=d70a242ca6f2719e32f71a1df9ed50a5" // key 앞에 <?key=>를 붙여야함 : prameter
+var itemPerPage = "&itemPerPage=20" //20개를 가져올것이라서
+const url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json"
+            + key
+            + itemPerPage 
+var item_int = 20
+
+var title = document.getElementById('a') //html에서 id a에 해당하는 것
+fetch(url)
+            .then(response=>response.json())
+            .then(function(msg){ //아래부터는 html로 가져오기 위한 코드
+                for(var i =0; i<item_int; i++){
+                    var div = document.createElement('div');
+                    var low_div = document.createElement('div')
+                    var title_div = document.createElement('div')
+                    var br = document.createElement('br');
+
+                    var mp = document.createElement('p');
+                    mp.id = 'movieNm'
+                    var np = document.createElement('p');
+                    np.id = 'nationAlt'
+                    var gp = document.createElement('p');
+                    gp.id = 'genreAlt'
+                    var pp = document.createElement('p');
+                    pp.id = 'prdtYear'
+                    title_div.id = 'title_div'
+                    low_div.id = 'low_div'
+                    div.id = 'movies'
+                    short_url = msg.movieListResult.movieList[i]
+                    console.log(short_url);
+                    div.appendChild(title_div)
+                    div.appendChild(low_div)
+                    title.appendChild(div);
+                    var movieNm = document.createTextNode(short_url.movieNm);
+                    var nationAlt = document.createTextNode(short_url.nationAlt);
+                    var genreAlt = document.createTextNode(short_url.genreAlt);
+                    var prdtYear = document.createTextNode(short_url.prdtYear);
+                    
+                    mp.appendChild(movieNm);
+                    np.appendChild(nationAlt);
+                    gp.appendChild(genreAlt);
+                    pp.appendChild(prdtYear);
+
+                    title_div.appendChild(mp);
+                    low_div.appendChild(br);
+                    low_div.appendChild(np);
+                    low_div.appendChild(gp);
+                    low_div.appendChild(pp);
+
+
+
+
+                }
+                        
+            });
+
+            fetch(url)
+            .then(response=>response.json())
+            .then(function(msg){
+                // msg가 어떻게 생겨먹었나?
+                console.log(msg);
+
+                // i<10 난 10개만 변수로 부여해도 괜찮아요 10대신
+                for(let i = 0; i<10; i++){
+                    // console에 찍은 msg 속으로 들어가보면 movieListResult -> MovieList 를 확인할 수 있어요
+                    // 해당 내용을 short_url에 담아요 for문이니깐 본인이 원하는 횟수만큼
+                    short_url = msg.movieListResult.movieList[i];
+                    
+                    //short_url이 어떻게 생겨먹었나?
+                    console.log(short_url);
+                    
+                    // 영화제목을 id = "a" div태그에 추가해주기 short_url 중에서 movieNm을 movieNm이라는 변수에 담았어요
+                    let movieNm = document.createTextNode(short_url.movieNm);
+                    title.appendChild(movieNm);
+
+                    // 줄바꿈을 위한 br태그 _ 없어도됨
+                    let br = document.createElement('br');
+                    title.appendChild(br);
+
+                }
+            });
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
